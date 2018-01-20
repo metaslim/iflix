@@ -17,6 +17,8 @@
     "nodemon": "^1.14.11"
   },
   "dependencies": {
-    "express": "^4.16.2"
+    "async": "^2.6.0",
+    "express": "^4.16.2",
+    "mongoose": "^5.0.1"
   }
 }
