@@ -4,7 +4,7 @@ var User = require('./api/models/userModel');
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/Rate_one_db');
+mongoose.connect('mongodb://localhost/rate_db');
 
 module.exports.seed_data = function () {
   seedUsers();
@@ -60,7 +60,7 @@ function seedContent() {
   ];
 
   for (content of contents) {
-    var newContent = new Content(user);
+    var newContent = new Content(content);
     newContent.save();
   }
 }

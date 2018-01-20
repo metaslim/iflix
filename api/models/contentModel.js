@@ -4,11 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ContentSchema = new Schema({
-  first_name: {
-    type: String,
-    required: [true, 'Why no name?']
-  },
-  last_name: {
+  name: {
     type: String,
     required: [true, 'Why no name?']
   },
