@@ -40,23 +40,23 @@ function seedUsers() {
 
 function seedContent() {
   const contents = [
-    { name: 'Iron Man' },
-    { name: 'The Incredible Hulk' },
-    { name: 'Iron Man 2' },
-    { name: 'Thor' },
-    { name: 'Captain America: The First Avenger' },
-    { name: 'The Avengers' },
-    { name: 'Iron Man 3' },
-    { name: 'Thor: The Dark World' },
-    { name: 'Captain America: The Winter Soldier' },
-    { name: 'Guardians of the Galaxy' },
-    { name: 'Avengers: Age of Ultron' },
-    { name: 'Ant-Man' },
-    { name: 'Captain America: Civil War' },
-    { name: 'Doctor Strange' },
-    { name: 'Guardians of the Galaxy Vol. 2' },
-    { name: 'Spider-Man: Homecoming' },
-    { name: 'Thor: Ragnarok' }
+    { name: 'Iron Man', year: 2008 },
+    { name: 'The Incredible Hulk', year: 2008},
+    { name: 'Iron Man 2', year: 2010},
+    { name: 'Thor', year: 2011},
+    { name: 'Captain America: The First Avenger', year: 2011},
+    { name: 'The Avengers', year: 2012},
+    { name: 'Iron Man 3', year: 2013},
+    { name: 'Thor: The Dark World', year: 2013},
+    { name: 'Captain America: The Winter Soldier', year: 2014},
+    { name: 'Guardians of the Galaxy', year: 2014},
+    { name: 'Avengers: Age of Ultron', year: 2015},
+    { name: 'Ant-Man', year: 2015},
+    { name: 'Captain America: Civil War', year: 2016},
+    { name: 'Doctor Strange', year: 2016},
+    { name: 'Guardians of the Galaxy Vol. 2', year: 2017},
+    { name: 'Spider-Man: Homecoming', year: 2017},
+    { name: 'Thor: Ragnarok', year: 2017}
 
   ];
 
