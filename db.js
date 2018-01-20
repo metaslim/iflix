@@ -1,6 +1,5 @@
-var Content = require('./api/models/contentModel');
-var Rate = require('./api/models/rateModel');
-var User = require('./api/models/userModel');
+var Content = require('./api/models/content');
+var User = require('./api/models/user');
 
 var mongoose = require('mongoose');
 mongoose.Promise = global.Promise;

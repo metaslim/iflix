@@ -1,7 +1,7 @@
 'use strict';
 
 var async = require("async");
-var content_helper = require("../helpers/contentHelper");
+var content_helper = require("../helpers/content");
 
 exports.show_content = function(req, res) {
   async.parallel({

@@ -1,7 +1,7 @@
 'use strict';
 
 var async = require("async");
-var rate_helper = require("../helpers/rateHelper");
+var rate_helper = require("../helpers/rate");
 
 exports.create_rating = function(req, res) {
   async.parallel({

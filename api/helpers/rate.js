@@ -1,10 +1,10 @@
 'use strict';
 
 var mongoose = require('mongoose');
-var Rate = mongoose.model('Rate');
-var User = mongoose.model('User');
-var Content = mongoose.model('Content');
-var ContentStat = mongoose.model('ContentStat');
+var ContentStat = require('../models/content_stat');
+var Content = require('../models/content');
+var Rate = require('../models/rate');
+var User = require('../models/user');
 
 module.exports = {
   get_user: function(callback, userId) {
