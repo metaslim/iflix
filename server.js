@@ -15,7 +15,7 @@ mongoose.connect('mongodb://localhost/rate_db');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/rateRoutes');
+var routes = require('./api/routes/routes');
 routes(app);
 
 app.listen(port);

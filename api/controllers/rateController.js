@@ -10,12 +10,12 @@ var ContentStat = mongoose.model('ContentStat');
 exports.create_a_rate = function(req, res) {
   async.parallel({
     user: function(callback) {
-      if (!mongoose.Types.ObjectId.isValid(req.query.user_id)) {
+      if (!mongoose.Types.ObjectId.isValid(req.query.userId)) {
         return callback('Invalid used_id');
       }
 
       User.findOne(
-        { _id: mongoose.Types.ObjectId(req.query.user_id) },
+        { _id: mongoose.Types.ObjectId(req.query.userId) },
         function(err, result) {
           if (err) {
             callback(err);
@@ -31,12 +31,12 @@ exports.create_a_rate = function(req, res) {
       )
     },
     content: function(callback) {
-      if (!mongoose.Types.ObjectId.isValid(req.query.user_id)) {
-        return callback('Invalid content_id');
+      if (!mongoose.Types.ObjectId.isValid(req.query.contentId)) {
+        return callback('Invalid ContentId');
       }
 
       Content.findOne(
-        { _id: mongoose.Types.ObjectId(req.query.content_id) },
+        { _id: mongoose.Types.ObjectId(req.query.contentId) },
         function(err, result) {
           if (err) {
             callback(err);
@@ -52,8 +52,12 @@ exports.create_a_rate = function(req, res) {
       )
     },
     rating: function(callback) {
-      if (req.query.rating > 5 || req.query.rating < 1) {
+      if (isNaN(req.query.rating)) {
         return callback('Invalid rating');
+      }
+
+      if (req.query.rating > 5 || req.query.rating < 1) {
+        return callback('Invalid rating, only 1 - 5 is accepted');
       }
 
       callback(null, req.query.rating);
@@ -61,7 +65,7 @@ exports.create_a_rate = function(req, res) {
   },
   function(err, results) {
     if(err) {
-      res.json({err :err});
+      return res.json({err :err});
     }
 
     if(results) {
@@ -75,38 +79,36 @@ exports.create_a_rate = function(req, res) {
 
       new_rate.save(function(err, rate) {
         if (err)
-          res.json({err :err});
+          return res.json({err: err});
 
 
         ContentStat.findOne(
           { content: mongoose.Types.ObjectId(results.content._id) },
           function(err, result) {
             if (err) {
-              res.json({err :err});
+              return res.json({err: err});
+            }
+
+            if (result) {
+              result.total_rating = parseInt(result.total_rating) + parseInt(results.rating);
+              result.number_of_rating = parseInt(result.number_of_rating) + 1;
+              result.average_rating = parseInt(result.total_rating) / parseInt(result.number_of_rating);
+              result.save();
             }
             else {
-              if (result) {
-                result.total_rating = parseInt(result.total_rating) + parseInt(results.rating);
-                result.number_of_rating = parseInt(result.number_of_rating) + 1;
-                result.average_rating = parseInt(result.total_rating) / parseInt(result.number_of_rating);
-                result.save();
-              }
-              else {
-                var newContentStat = new ContentStat(
-                  {
-                    content: results.content._id,
-                    total_rating: results.rating,
-                    number_of_rating: 1,
-                    average_rating: results.rating
-                  }
-                );
-                newContentStat.save();
-              }
+              var newContentStat = new ContentStat(
+                {
+                  content: results.content._id,
+                  total_rating: results.rating,
+                  number_of_rating: 1,
+                  average_rating: results.rating
+                }
+              );
+              newContentStat.save();
             }
           }
         );
-
-        res.json({msg : "Thanks for the rate"});
+        return res.json({msg : "Thanks for the rate"});
       });
     }
   });
