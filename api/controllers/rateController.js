@@ -5,6 +5,7 @@ var mongoose = require('mongoose');
 var Rate = mongoose.model('Rate');
 var User = mongoose.model('User');
 var Content = mongoose.model('Content');
+var ContentStat = mongoose.model('ContentStat');
 
 exports.create_a_rate = function(req, res) {
   async.parallel({
@@ -13,7 +14,6 @@ exports.create_a_rate = function(req, res) {
         return callback('Invalid used_id');
       }
 
-      console.log(req.query.user_id)
       User.findOne(
         { _id: mongoose.Types.ObjectId(req.query.user_id) },
         function(err, result) {
@@ -61,7 +61,7 @@ exports.create_a_rate = function(req, res) {
   },
   function(err, results) {
     if(err) {
-      return res.send(err);
+      res.json({err :err});
     }
 
     if(results) {
@@ -75,11 +75,39 @@ exports.create_a_rate = function(req, res) {
 
       new_rate.save(function(err, rate) {
         if (err)
-          res.send(err);
+          res.json({err :err});
+
+
+        ContentStat.findOne(
+          { content: mongoose.Types.ObjectId(results.content._id) },
+          function(err, result) {
+            if (err) {
+              res.json({err :err});
+            }
+            else {
+              if (result) {
+                result.total_rating = parseInt(result.total_rating) + parseInt(results.rating);
+                result.number_of_rating = parseInt(result.number_of_rating) + 1;
+                result.average_rating = parseInt(result.total_rating) / parseInt(result.number_of_rating);
+                result.save();
+              }
+              else {
+                var newContentStat = new ContentStat(
+                  {
+                    content: results.content._id,
+                    total_rating: results.rating,
+                    number_of_rating: 1,
+                    average_rating: results.rating
+                  }
+                );
+                newContentStat.save();
+              }
+            }
+          }
+        );
 
         res.json({msg : "Thanks for the rate"});
       });
     }
-  }
-  );
+  });
 };

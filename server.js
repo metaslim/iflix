@@ -3,6 +3,7 @@ var app = express();
 var port = process.env.PORT || 3000;
 
 var mongoose = require('mongoose');
+var ContentStat = require('./api/models/content_statModel');
 var Content = require('./api/models/contentModel');
 var Rate = require('./api/models/rateModel');
 var User = require('./api/models/userModel');
