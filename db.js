@@ -9,6 +9,7 @@ mongoose.connect('mongodb://localhost/rate_db');
 module.exports.seed_data = function () {
   seedUsers();
   seedContent();
+  disconnectDb();
 };
 
 function seedUsers() {
@@ -63,4 +64,10 @@ function seedContent() {
     var newContent = new Content(content);
     newContent.save();
   }
+}
+
+function disconnectDb() {
+  setTimeout(function() {
+    mongoose.connection.close()
+  }, 1000);
 }
