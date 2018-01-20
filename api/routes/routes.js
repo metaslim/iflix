@@ -5,9 +5,8 @@ module.exports = function(app) {
   var content = require('../controllers/contentController');
 
   app.route('/rates')
-    .post(rate.create_a_rate);
+    .post(rate.create_rating);
 
   app.route('/content')
-    .post(content.show_a_content)
-    .get(content.show_a_content);
+    .post(content.show_content);
 };

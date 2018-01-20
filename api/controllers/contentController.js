@@ -7,7 +7,7 @@ var User = mongoose.model('User');
 var Content = mongoose.model('Content');
 var ContentStat = mongoose.model('ContentStat');
 
-exports.show_a_content = function(req, res) {
+exports.show_content = function(req, res) {
   const minimum_rating_required = 10;
 
   if (!mongoose.Types.ObjectId.isValid(req.query.contentId)) {
