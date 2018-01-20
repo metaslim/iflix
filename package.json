@@ -7,7 +7,7 @@
     "start_db": "mongod --dbpath data/db &",
     "stop_db": "rm -rf data/db/mongod.lock && ps -ef | grep mongod | grep -v grep | awk '{print \"kill -9 \"$2}' | sh",
     "reset_db": "rm -rf data/db/*",
-    "seed_db": "node -e 'require(\"./db\").seed_data()'",
+    "seed_db": "mkdir -p data/db && node -e 'require(\"./db\").seed_data()'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server.js"
   },
