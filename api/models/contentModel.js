@@ -4,7 +4,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ContentSchema = new Schema({
-  name: {
+  first_name: {
+    type: String,
+    required: [true, 'Why no name?']
+  },
+  last_name: {
     type: String,
     required: [true, 'Why no name?']
   },
