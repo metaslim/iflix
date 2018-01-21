@@ -70,5 +70,5 @@ function seedContent() {
 function disconnectDb() {
   setTimeout(function() {
     mongoose.connection.close()
-  }, 5000);
+  }, 2000);
 }
