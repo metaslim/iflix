@@ -1,7 +1,7 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let ContentStat = require('../models/content_stat');
+const mongoose = require('mongoose');
+const ContentStat = require('../models/content_stat');
 
 module.exports = {
   getContentStat: function(callback, contentId) {
@@ -38,15 +38,9 @@ module.exports = {
         );
       }
 
-      let average_rating = result.average_rating;
-      let content = result.content.name;
 
-      if (parseInt(result.number_of_rating) < minimum_rating_required) {
-        average_rating = null;
-      }
-      else {
-        average_rating = average_rating.toFixed(2)
-      }
+      const content = result.content.name;
+      const average_rating = result.number_of_rating < minimum_rating_required ? null : result.average_rating.toFixed(2);  
 
       callback(null, {
         content: content,

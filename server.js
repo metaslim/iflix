@@ -1,9 +1,9 @@
-let express = require('express');
-let app = express();
-let port = 3000;
-let config = require('config');
-let mongoose = require('mongoose');
-let bodyParser = require('body-parser');
+const express = require('express');
+const app = express();
+const port = 3000;
+const config = require('config');
+const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
 
@@ -12,7 +12,7 @@ mongoose.connect(config.DBHost);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-let routes = require('./api/routes/routes');
+const routes = require('./api/routes/routes');
 routes(app);
 
 app.listen(port);

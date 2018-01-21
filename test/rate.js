@@ -1,28 +1,28 @@
 process.env.NODE_ENV = 'test';
 
-let mongoose = require('mongoose');
-let ContentStat = require('../api/models/content_stat');
-let Content = require('../api/models/content');
-let Rate = require('../api/models/rate');
-let User = require('../api/models/user');
+const mongoose = require('mongoose');
+const ContentStat = require('../api/models/content_stat');
+const Content = require('../api/models/content');
+const Rate = require('../api/models/rate');
+const User = require('../api/models/user');
 
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server');
+const should = chai.should();
 
 chai.use(chaiHttp);
 
 describe('Rate', () => {
-  let content_id = '5a63e724aa491c5bffc83ff3';
-  let content_name = 'Ip Man';
-  let content_year = 2008
-  let content_object_id = mongoose.Types.ObjectId(content_id);
+  const content_id = '5a63e724aa491c5bffc83ff3';
+  const content_name = 'Ip Man';
+  const content_year = 2008
+  const content_object_id = mongoose.Types.ObjectId(content_id);
 
-  let user_id = '5a63e724aa491c5bffc83ff4';
-  let user_first_name = 'Shouhei';
-  let user_last_name = 'Yamauchi';
-  let content_user_id = mongoose.Types.ObjectId(user_id);
+  const user_id = '5a63e724aa491c5bffc83ff4';
+  const user_first_name = 'Shouhei';
+  const user_last_name = 'Yamauchi';
+  const content_user_id = mongoose.Types.ObjectId(user_id);
 
   beforeEach((done) => {
     Content.create(

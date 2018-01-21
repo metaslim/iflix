@@ -1,21 +1,21 @@
 process.env.NODE_ENV = 'test';
 
-let mongoose = require('mongoose');
-let ContentStat = require('../api/models/content_stat');
-let Content = require('../api/models/content');
+const mongoose = require('mongoose');
+const ContentStat = require('../api/models/content_stat');
+const Content = require('../api/models/content');
 
-let chai = require('chai');
-let chaiHttp = require('chai-http');
-let server = require('../server');
-let should = chai.should();
+const chai = require('chai');
+const chaiHttp = require('chai-http');
+const server = require('../server');
+const should = chai.should();
 
 chai.use(chaiHttp);
 
 describe('Content', () => {
-  let _id = '5a63e724aa491c5bffc83ff3';
-  let content_name = 'Ip Man';
-  let year = 2008;
-  let object_id = mongoose.Types.ObjectId(_id);
+  const _id = '5a63e724aa491c5bffc83ff3';
+  const content_name = 'Ip Man';
+  const year = 2008;
+  const object_id = mongoose.Types.ObjectId(_id);
 
   beforeEach((done) => {
     Content.create(
@@ -63,7 +63,7 @@ describe('Content', () => {
     });
 
     it('it should show rating correctly', (done) => {
-      let number_of_rating = 4
+      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,
@@ -89,7 +89,7 @@ describe('Content', () => {
     });
 
     it('it should not show content for wrong contentId', (done) => {
-      let number_of_rating = 4
+      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,
@@ -115,7 +115,7 @@ describe('Content', () => {
     });
 
     it('it should not show content for invalid contentId', (done) => {
-      let number_of_rating = 4
+      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,

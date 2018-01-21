@@ -1,8 +1,8 @@
 'use strict';
 
 module.exports = function(app) {
-  let rate = require('../controllers/rate');
-  let content = require('../controllers/content');
+  const rate = require('../controllers/rate');
+  const content = require('../controllers/content');
 
   app.route('/rating')
     .post(rate.createRating);

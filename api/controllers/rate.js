@@ -1,8 +1,8 @@
 'use strict';
 
-let async = require("async");
-let rateHelper = require("../helpers/rate");
-let responseHelper = require("../helpers/response");
+const async = require("async");
+const rateHelper = require("../helpers/rate");
+const responseHelper = require("../helpers/response");
 
 exports.createRating = function(req, res) {
   async.parallel({

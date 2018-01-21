@@ -1,10 +1,10 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let ContentStat = require('../models/content_stat');
-let Content = require('../models/content');
-let Rate = require('../models/rate');
-let User = require('../models/user');
+const mongoose = require('mongoose');
+const ContentStat = require('../models/content_stat');
+const Content = require('../models/content');
+const Rate = require('../models/rate');
+const User = require('../models/user');
 
 module.exports = {
   getUser: (callback, userId) => {
