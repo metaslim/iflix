@@ -14,28 +14,28 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 describe('Rate', () => {
-  const content_id = '5a63e724aa491c5bffc83ff3';
-  const content_name = 'Ip Man';
-  const content_year = 2008
-  const content_object_id = mongoose.Types.ObjectId(content_id);
+  const contentId = '5a63e724aa491c5bffc83ff3';
+  const contentName = 'Ip Man';
+  const contentYear = 2008
+  const contentObjectId = mongoose.Types.ObjectId(contentId);
 
-  const user_id = '5a63e724aa491c5bffc83ff4';
-  const user_first_name = 'Shouhei';
-  const user_last_name = 'Yamauchi';
-  const content_user_id = mongoose.Types.ObjectId(user_id);
+  const userId = '5a63e724aa491c5bffc83ff4';
+  const userFirstName = 'Shouhei';
+  const userLastName = 'Yamauchi';
+  const contentUserId = mongoose.Types.ObjectId(userId);
 
   beforeEach((done) => {
     Content.create(
       {
-        _id: content_object_id,
-        name: content_name,
-        year: content_year
+        _id: contentObjectId,
+        name: contentName,
+        year: contentYear
       }, (err, ins) => {
         User.create(
           {
-            _id: content_user_id,
-            first_name: user_first_name,
-            last_name: user_last_name
+            _id: contentUserId,
+            first_name: userFirstName,
+            last_name: userLastName
           }, (err, ins) => {
             done();
           }
@@ -62,8 +62,8 @@ describe('Rate', () => {
       .post('/rating')
       .send(
         {
-          userId: user_id,
-          contentId: content_id,
+          userId: userId,
+          contentId: contentId,
           rating: 5
         }
       )
@@ -81,7 +81,7 @@ describe('Rate', () => {
       .post('/rating')
       .send(
         {
-          userId: user_id,
+          userId: userId,
           contentId: '5a63e724aa491c5bffc83ff4',
           rating: 5
         }
@@ -101,7 +101,7 @@ describe('Rate', () => {
       .post('/rating')
       .send(
         {
-          userId: user_id,
+          userId: userId,
           contentId: '5a63e724aa4',
           rating: 5
         }
@@ -122,7 +122,7 @@ describe('Rate', () => {
       .send(
         {
           userId: '5a63e724aa491c5bffc83ff5',
-          contentId: content_id,
+          contentId: contentId,
           rating: 5
         }
       )
@@ -142,7 +142,7 @@ describe('Rate', () => {
       .send(
         {
           userId: '5a63e724aa4',
-          contentId: content_id,
+          contentId: contentId,
           rating: 5
         }
       )
@@ -161,8 +161,8 @@ describe('Rate', () => {
       .post('/rating')
       .send(
         {
-          userId: user_id,
-          contentId: content_id,
+          userId: userId,
+          contentId: contentId,
           rating: -1
         }
       )

@@ -35,8 +35,7 @@ function seedUsers() {
   ];
 
   for (const user of users) {
-    const newUser = new User(user);
-    newUser.save();
+    User.create(user);
   }
 }
 
@@ -63,8 +62,7 @@ function seedContent() {
   ];
 
   for (const content of contents) {
-    const newContent = new Content(content);
-    newContent.save();
+    Content.create(content);
   }
 }
 

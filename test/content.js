@@ -13,7 +13,7 @@ chai.use(chaiHttp);
 
 describe('Content', () => {
   const _id = '5a63e724aa491c5bffc83ff3';
-  const content_name = 'Ip Man';
+  const contentName = 'Ip Man';
   const year = 2008;
   const object_id = mongoose.Types.ObjectId(_id);
 
@@ -21,7 +21,7 @@ describe('Content', () => {
     Content.create(
       {
         _id: object_id,
-        name: content_name,
+        name: contentName,
         year: year
       }, (err, ins) => {
         done();
@@ -54,7 +54,7 @@ describe('Content', () => {
           )
           .end((err, res) => {
             res.should.have.status(200);
-            res.body.content.should.be.eql(content_name);
+            res.body.content.should.be.eql(contentName);
             chai.expect(res.body.average_rating).to.be.null;
             done();
           });
@@ -80,7 +80,7 @@ describe('Content', () => {
           )
           .end((err, res) => {
             res.should.have.status(200);
-            res.body.content.should.be.eql(content_name);
+            res.body.content.should.be.eql(contentName);
             chai.expect(parseInt(res.body.average_rating)).to.be.eql(number_of_rating);
             done();
           });

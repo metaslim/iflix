@@ -104,14 +104,13 @@ module.exports = {
       return;
     }
 
-    var new_rate = new Rate(
+    Rate.create(
       {
         user: results.user._id,
         content: results.content._id,
         rating: results.rating,
       }
     );
-    new_rate.save();
   },
 
   updateContentStat: (results) => {
@@ -129,7 +128,7 @@ module.exports = {
           result.save();
         }
         else {
-          var newContentStat = new ContentStat(
+          ContentStat.create(
             {
               content: results.content._id,
               total_rating: results.rating,
@@ -137,7 +136,6 @@ module.exports = {
               average_rating: results.rating
             }
           );
-          newContentStat.save();
         }
       }
     );
