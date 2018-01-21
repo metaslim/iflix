@@ -1,19 +1,27 @@
-var express = require('express');
-var app = express();
-var port = process.env.PORT || 3000;
+let express = require('express');
+let app = express();
+let port = process.env.PORT || 3000;
 
-var mongoose = require('mongoose');
-var bodyParser = require('body-parser');
+let mongoose = require('mongoose');
+let bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/rate_db');
+
+if(process.env.NODE_ENV !== 'test') {
+  mongoose.connect('mongodb://localhost/rate_db');
+}
+else {
+  mongoose.connect('mongodb://localhost/rate_test_one_db');
+}
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/routes');
+let routes = require('./api/routes/routes');
 routes(app);
 
 app.listen(port);
 
 console.log('Rate RESTful API server started on: ' + port);
+
+module.exports = app;

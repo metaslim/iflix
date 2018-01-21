@@ -1,19 +1,19 @@
 'use strict';
 
-var async = require("async");
-var rateHelper = require("../helpers/rate");
-var responseHelper = require("../helpers/response");
+let async = require("async");
+let rateHelper = require("../helpers/rate");
+let responseHelper = require("../helpers/response");
 
-exports.create_rating = function(req, res) {
+exports.createRating = function(req, res) {
   async.parallel({
     user: function(callback) {
-      rateHelper.getUser(callback, req.query.userId)
+      rateHelper.getUser(callback, req.body.userId)
     },
     content: function(callback) {
-      rateHelper.getContent(callback, req.query.contentId)
+      rateHelper.getContent(callback, req.body.contentId)
     },
     rating: function(callback) {
-      rateHelper.getRating(callback, req.query.rating)
+      rateHelper.getRating(callback, req.body.rating)
     },
   },
   function(err, results) {

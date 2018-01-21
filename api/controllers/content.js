@@ -1,13 +1,13 @@
 'use strict';
 
-var async = require("async");
-var contentHelper = require("../helpers/content");
-var responseHelper = require("../helpers/response");
+let async = require("async");
+let contentHelper = require("../helpers/content");
+let responseHelper = require("../helpers/response");
 
-exports.show_content = function(req, res) {
+exports.showContent = function(req, res) {
   async.parallel({
     content: function(callback) {
-      contentHelper.getContentStat(callback, req.query.contentId)
+      contentHelper.getContentStat(callback, req.body.contentId)
     },
   },
   function(err, results) {
@@ -16,7 +16,7 @@ exports.show_content = function(req, res) {
       res,
       function()
       {
-        return results
+        return results.content
       }
     )
   });

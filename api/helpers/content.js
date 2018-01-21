@@ -1,7 +1,7 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var ContentStat = require('../models/content_stat');
+let mongoose = require('mongoose');
+let ContentStat = require('../models/content_stat');
 
 module.exports = {
   getContentStat: function(callback, contentId) {

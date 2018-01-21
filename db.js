@@ -1,9 +1,9 @@
 'use strict';
 
-var Content = require('./api/models/content');
-var User = require('./api/models/user');
+let Content = require('./api/models/content');
+let User = require('./api/models/user');
 
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/rate_db');
 
@@ -33,8 +33,8 @@ function seedUsers() {
     { first_name: 'Peter', last_name: 'Quill' }
   ];
 
-  for (var user of users) {
-    var newUser = new User(user);
+  for (let user of users) {
+    let newUser = new User(user);
     newUser.save();
   }
 }
@@ -61,8 +61,8 @@ function seedContent() {
 
   ];
 
-  for (var content of contents) {
-    var newContent = new Content(content);
+  for (let content of contents) {
+    let newContent = new Content(content);
     newContent.save();
   }
 }

@@ -1,12 +1,12 @@
 'use strict';
 
 module.exports = function(app) {
-  var rate = require('../controllers/rate');
-  var content = require('../controllers/content');
+  let rate = require('../controllers/rate');
+  let content = require('../controllers/content');
 
   app.route('/rates')
-    .post(rate.create_rating);
+    .post(rate.createRating);
 
   app.route('/content')
-    .post(content.show_content);
+    .post(content.showContent);
 };
