@@ -1,3 +1,4 @@
 {
-  "DBHost": "mongodb://localhost/rate_db_test"
+  "dbHost": "mongodb://localhost/rate_db_test",
+  "minimumRatingRequired": 10
 }

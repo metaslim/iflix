@@ -2,11 +2,10 @@
 
 const mongoose = require('mongoose');
 const ContentStat = require('../models/content_stat');
+const config = require('config');
 
 module.exports = {
   getContentStat: function(callback, contentId) {
-    const minimumRatingRequired = 10;
-
     if (!mongoose.Types.ObjectId.isValid(contentId)) {
       return callback(
         null,
@@ -40,7 +39,7 @@ module.exports = {
 
 
       const content = result.content.name;
-      const averageRating = result.number_of_rating < minimumRatingRequired ? null : result.average_rating.toFixed(2);
+      const averageRating = result.number_of_rating < config.minimumRatingRequired ? null : result.average_rating.toFixed(2);
 
       callback(null, {
         content: content,

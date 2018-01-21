@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
 
-mongoose.connect(config.DBHost);
+mongoose.connect(config.dbHost);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

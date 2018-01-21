@@ -6,7 +6,7 @@ const config = require('config');
 const mongoose = require('mongoose');
 
 mongoose.Promise = global.Promise;
-mongoose.connect(config.DBHost);
+mongoose.connect(config.dbHost);
 
 module.exports.seed_data = function () {
   seedUsers();
