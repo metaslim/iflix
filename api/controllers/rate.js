@@ -2,6 +2,7 @@
 
 var async = require("async");
 var rate_helper = require("../helpers/rate");
+var response_helper = require("../helpers/response");
 
 exports.create_rating = function(req, res) {
   async.parallel({
@@ -16,14 +17,9 @@ exports.create_rating = function(req, res) {
     },
   },
   function(err, results) {
-    if(err) {
-      return res.json({err: err});
-    }
+    rate_helper.insert_rating(results);
+    rate_helper.update_content_stat(results);
 
-    if(results) {
-      rate_helper.insert_rating(results);
-      rate_helper.update_content_stat(results);
-      return res.json({msg: "Thanks for the rate"});
-    }
+    response_helper.flush_json(results, res)
   });
 };

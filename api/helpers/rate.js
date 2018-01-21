@@ -9,51 +9,101 @@ var User = require('../models/user');
 module.exports = {
   get_user: function(callback, userId) {
     if (!mongoose.Types.ObjectId.isValid(userId)) {
-      return callback('Invalid used_id');
-    }
-
-    User.findOne(
-      { _id: mongoose.Types.ObjectId(userId) },
-      function(err, result) {
-        if (!result) {
-          return callback('No user found');
+      callback(
+        null,
+        {
+          error:
+          {
+            description: 'userId must be single String of 12 bytes or a string of 24 hex characters.',
+            code: 400
+          }
         }
-
-        callback(null, result);
-      }
-    )
+      );
+    }
+    else {
+      User.findOne(
+        { _id: mongoose.Types.ObjectId(userId) },
+        function(err, result) {
+          if (!result) {
+            callback(
+              null,
+              {
+                error:
+                {
+                  description: 'User does not exist',
+                  code: 404
+                }
+              }
+            );
+          }
+          else {
+            callback(null, result);
+          }
+        }
+      )
+    }
   },
 
   get_content: function(callback, contentId) {
     if (!mongoose.Types.ObjectId.isValid(contentId)) {
-      return callback('Invalid ContentId');
-    }
-
-    Content.findOne(
-      { _id: mongoose.Types.ObjectId(contentId) },
-      function(err, result) {
-        if (!result) {
-          return callback('No content found');
+      callback(
+        null,
+        {
+          error:
+          {
+            description: 'contentId must be single String of 12 bytes or a string of 24 hex characters.',
+            code: 400
+          }
         }
-
-        callback(null, result);
-      }
-    )
+      );
+    }
+    else
+    {
+      Content.findOne(
+        { _id: mongoose.Types.ObjectId(contentId) },
+        function(err, result) {
+          if (!result) {
+            callback(
+              null,
+              {
+                error:
+                {
+                  description: 'Content does not exist',
+                  code: 404
+                }
+              }
+            );
+          }
+          else {
+            callback(null, result);
+          }
+        }
+      )
+    }
   },
 
   get_rating: function(callback, rating) {
-    if (isNaN(rating)) {
-      return callback('Invalid rating');
+    if (isNaN(rating) || (rating > 5 || rating < 1)) {
+      callback(
+        null,
+        {
+          error:
+          {
+            description: 'Invalid rating, only 1 - 5 is accepted',
+            code: 400
+          }
+        }
+      );
+    } else {
+      callback(null, rating);
     }
-
-    if (rating > 5 || rating < 1) {
-      return callback('Invalid rating, only 1 - 5 is accepted');
-    }
-
-    callback(null, rating);
   },
 
   insert_rating: function(results) {
+    if (results.user.error || results.content.error) {
+      return;
+    }
+
     var new_rate = new Rate(
       {
         user: results.user._id,
@@ -65,6 +115,10 @@ module.exports = {
   },
 
   update_content_stat: function(results) {
+    if (results.user.error || results.content.error) {
+      return;
+    }
+
     ContentStat.findOne(
       { content: mongoose.Types.ObjectId(results.content._id) },
       function(err, result) {

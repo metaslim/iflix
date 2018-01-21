@@ -1,3 +1,5 @@
+'use strict';
+
 var Content = require('./api/models/content');
 var User = require('./api/models/user');
 
@@ -31,7 +33,7 @@ function seedUsers() {
     { first_name: 'Peter', last_name: 'Quill' }
   ];
 
-  for (user of users) {
+  for (var user of users) {
     var newUser = new User(user);
     newUser.save();
   }
@@ -59,7 +61,7 @@ function seedContent() {
 
   ];
 
-  for (content of contents) {
+  for (var content of contents) {
     var newContent = new Content(content);
     newContent.save();
   }
