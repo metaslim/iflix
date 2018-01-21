@@ -61,7 +61,7 @@ module.exports = {
     {
       Content.findOne(
         { _id: mongoose.Types.ObjectId(contentId) },
-        function(err, result) {
+        (err, result) => {
           if (!result) {
             callback(
               null,

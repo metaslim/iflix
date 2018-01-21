@@ -12,8 +12,9 @@ let should = chai.should();
 chai.use(chaiHttp);
 
 describe('Content', () => {
-  let _id = '5a63e724aa491c5bffc83ff3'
-  let content_name = 'Ip Man'
+  let _id = '5a63e724aa491c5bffc83ff3';
+  let content_name = 'Ip Man';
+  let year = 2008;
   let object_id = mongoose.Types.ObjectId(_id);
 
   beforeEach((done) => {
@@ -21,7 +22,7 @@ describe('Content', () => {
       {
         _id: object_id,
         name: content_name,
-        year: 2008
+        year: year
       }, (err, ins) => {
         done();
       }
