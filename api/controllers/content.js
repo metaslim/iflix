@@ -4,13 +4,13 @@ const async = require("async");
 const contentHelper = require("../helpers/content");
 const responseHelper = require("../helpers/response");
 
-exports.showContent = function(req, res) {
+exports.showContent = (req, res) => {
   async.parallel({
-    content: function(callback) {
+    content: (callback) => {
       contentHelper.getContentStat(callback, req.body.contentId)
     },
   },
-  function(err, results) {
+  (err, results) => {
     responseHelper.flushJson(
       results,
       res,

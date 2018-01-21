@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function(app) {
+module.exports = (app) => {
   const rate = require('../controllers/rate');
   const content = require('../controllers/content');
 

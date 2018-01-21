@@ -4,19 +4,19 @@ const async = require("async");
 const rateHelper = require("../helpers/rate");
 const responseHelper = require("../helpers/response");
 
-exports.createRating = function(req, res) {
+exports.createRating = (req, res) => {
   async.parallel({
-    user: function(callback) {
+    user: (callback) => {
       rateHelper.getUser(callback, req.body.userId)
     },
-    content: function(callback) {
+    content: (callback) => {
       rateHelper.getContent(callback, req.body.contentId)
     },
-    rating: function(callback) {
+    rating: (callback) => {
       rateHelper.getRating(callback, req.body.rating)
     },
   },
-  function(err, results) {
+  (err, results) => {
     rateHelper.insertRating(results);
     rateHelper.updateContentStat(results);
 
