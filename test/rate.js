@@ -167,7 +167,6 @@ describe('Rate', () => {
         }
       )
       .end((err, res) => {
-        console.log(res.body)
         res.should.have.status(422);
         res.body.errors[0].description.should.be.eql('Invalid rating, only 1 - 5 is accepted');
         res.body.errors[0].code.should.be.eql(400);
