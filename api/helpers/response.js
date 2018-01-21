@@ -1,7 +1,7 @@
 var rate_helper = require("../helpers/rate");
 
 module.exports = {
-  flush_json: function(results, res) {
+  flush_json: function(results, res, callback) {
     var errors = new Array()
 
     for (var key in results) {
@@ -22,7 +22,7 @@ module.exports = {
     }
     else {
       return res.status(200).json(
-        { description: "Success"}
+        callback()
       );
     }
   }

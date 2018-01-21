@@ -8,7 +8,16 @@ module.exports = {
     const minimum_rating_required = 10;
 
     if (!mongoose.Types.ObjectId.isValid(contentId)) {
-      return callback('Invalid ContentId');
+      return callback(
+        null,
+        {
+          error:
+          {
+            description: 'contentId must be single String of 12 bytes or a string of 24 hex characters.',
+            code: 400
+          }
+        }
+      );
     }
 
     ContentStat.findOne(
@@ -17,7 +26,16 @@ module.exports = {
     .populate('content')
     .exec(function (err, result) {
       if (!result) {
-        return callback('No content found');
+        return callback(
+          null,
+          {
+            error:
+            {
+              description: 'Content does not exist',
+              code: 404
+            }
+          }
+        );
       }
 
       var average_rating = result.average_rating;

@@ -20,6 +20,13 @@ exports.create_rating = function(req, res) {
     rate_helper.insert_rating(results);
     rate_helper.update_content_stat(results);
 
-    response_helper.flush_json(results, res)
+    response_helper.flush_json(
+      results,
+      res,
+      function()
+      {
+        return {description: "Success"}
+      }
+    )
   });
 };

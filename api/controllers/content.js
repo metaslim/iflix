@@ -2,6 +2,7 @@
 
 var async = require("async");
 var content_helper = require("../helpers/content");
+var response_helper = require("../helpers/response");
 
 exports.show_content = function(req, res) {
   async.parallel({
@@ -10,12 +11,13 @@ exports.show_content = function(req, res) {
     },
   },
   function(err, results) {
-    if(err) {
-      return res.json({err: err});
-    }
-
-    if(results) {
-      return res.json(results);
-    }
+    response_helper.flush_json(
+      results,
+      res,
+      function()
+      {
+        return results
+      }
+    )
   });
 };
