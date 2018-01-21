@@ -7,7 +7,7 @@ let Rate = require('../models/rate');
 let User = require('../models/user');
 
 module.exports = {
-  getUser: function(callback, userId) {
+  getUser: (callback, userId) => {
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       callback(
         null,
@@ -23,7 +23,7 @@ module.exports = {
     else {
       User.findOne(
         { _id: mongoose.Types.ObjectId(userId) },
-        function(err, result) {
+        (err, result) => {
           if (!result) {
             callback(
               null,
@@ -44,7 +44,7 @@ module.exports = {
     }
   },
 
-  getContent: function(callback, contentId) {
+  getContent: (callback, contentId) => {
     if (!mongoose.Types.ObjectId.isValid(contentId)) {
       callback(
         null,
@@ -82,7 +82,7 @@ module.exports = {
     }
   },
 
-  getRating: function(callback, rating) {
+  getRating: (callback, rating) => {
     if (isNaN(rating) || (rating > 5 || rating < 1)) {
       callback(
         null,
@@ -99,7 +99,7 @@ module.exports = {
     }
   },
 
-  insertRating: function(results) {
+  insertRating: (results) => {
     if (results.user.error || results.content.error || results.rating.error) {
       return;
     }
@@ -114,14 +114,14 @@ module.exports = {
     new_rate.save();
   },
 
-  updateContentStat: function(results) {
+  updateContentStat: (results) => {
     if (results.user.error || results.content.error || results.rating.error) {
       return;
     }
 
     ContentStat.findOne(
       { content: mongoose.Types.ObjectId(results.content._id) },
-      function(err, result) {
+      (err, result) => {
         if (result) {
           result.total_rating = parseInt(result.total_rating) + parseInt(results.rating);
           result.number_of_rating = parseInt(result.number_of_rating) + 1;

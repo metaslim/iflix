@@ -29,8 +29,8 @@ describe('Content', () => {
   });
 
   afterEach((done) => {
-    ContentStat.remove(function(err,removed) {
-      Content.remove(function(err,removed) {});
+    ContentStat.remove((err,removed) => {
+      Content.remove((err,removed) => {});
     });
     done();
   });
@@ -43,8 +43,7 @@ describe('Content', () => {
           total_rating: 10,
           number_of_rating: 2,
           average_rating: 5
-        },
-        function (err, instance) {
+        }, (err, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -70,8 +69,7 @@ describe('Content', () => {
           total_rating: 40,
           number_of_rating: 10,
           average_rating: number_of_rating
-        },
-        function (err, instance) {
+        }, (err, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -97,8 +95,7 @@ describe('Content', () => {
           total_rating: 40,
           number_of_rating: 10,
           average_rating: number_of_rating
-        },
-        function (err, instance) {
+        }, (err, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -124,8 +121,7 @@ describe('Content', () => {
           total_rating: 40,
           number_of_rating: 10,
           average_rating: number_of_rating
-        },
-        function (err, instance) {
+        }, (err, instance) => {
           chai.request(server)
           .post('/content')
           .send(

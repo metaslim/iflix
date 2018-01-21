@@ -23,10 +23,7 @@ exports.createRating = function(req, res) {
     responseHelper.flushJson(
       results,
       res,
-      function()
-      {
-        return {description: "Success"}
-      }
+      () => { return {description: "Success"}}
     )
   });
 };

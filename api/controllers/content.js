@@ -14,10 +14,7 @@ exports.showContent = function(req, res) {
     responseHelper.flushJson(
       results,
       res,
-      function()
-      {
-        return results.content
-      }
+      () => { return results.content }
     )
   });
 };

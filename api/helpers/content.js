@@ -24,7 +24,7 @@ module.exports = {
       {content: mongoose.Types.ObjectId(contentId)}
     )
     .populate('content')
-    .exec(function (err, result) {
+    .exec((err, result) => {
       if (!result) {
         return callback(
           null,
@@ -38,8 +38,8 @@ module.exports = {
         );
       }
 
-      var average_rating = result.average_rating;
-      var content = result.content.name;
+      let average_rating = result.average_rating;
+      let content = result.content.name;
 
       if (parseInt(result.number_of_rating) < minimum_rating_required) {
         average_rating = null;
