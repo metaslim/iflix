@@ -25,7 +25,12 @@ To reset mongodb data in data/db in the current app folder
 npm run reset_db
 ```
 
-To insert sample data into mongodb data in data/db in the current app folder
+To insert sample data into mongodb data in data/db in the current app folder, remember to run npm run start_db first
 ```
 npm run seed_db
+```
+
+To run the test
+```
+npm run test
 ```
