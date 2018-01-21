@@ -2,7 +2,7 @@
   "name": "iflix",
   "version": "1.0.0",
   "description": "iflix backend test coding experiment",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start_db": "mkdir -p data/db && mongod --dbpath data/db &",
     "stop_db": "rm -rf data/db/mongod.lock && ps -ef | grep mongod | grep -v grep | awk '{print \"kill -9 \"$2}' | sh",
@@ -11,7 +11,7 @@
     "test": "mocha --exit",
     "start": "nodemon server.js"
   },
-  "author": "",
+  "author": "Welly",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.1.2",
@@ -21,6 +21,8 @@
   },
   "dependencies": {
     "async": "^2.6.0",
+    "body-parser": "^1.18.2",
+    "config": "^1.29.2",
     "express": "^4.16.2",
     "mongoose": "^5.0.1"
   }

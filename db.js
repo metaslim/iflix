@@ -2,10 +2,11 @@
 
 let Content = require('./api/models/content');
 let User = require('./api/models/user');
-
+let config = require('config');
 let mongoose = require('mongoose');
+
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/rate_db');
+mongoose.connect(config.DBHost);
 
 module.exports.seed_data = function () {
   seedUsers();
