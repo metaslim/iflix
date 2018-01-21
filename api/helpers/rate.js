@@ -7,7 +7,7 @@ var Rate = require('../models/rate');
 var User = require('../models/user');
 
 module.exports = {
-  get_user: function(callback, userId) {
+  getUser: function(callback, userId) {
     if (!mongoose.Types.ObjectId.isValid(userId)) {
       callback(
         null,
@@ -44,7 +44,7 @@ module.exports = {
     }
   },
 
-  get_content: function(callback, contentId) {
+  getContent: function(callback, contentId) {
     if (!mongoose.Types.ObjectId.isValid(contentId)) {
       callback(
         null,
@@ -82,7 +82,7 @@ module.exports = {
     }
   },
 
-  get_rating: function(callback, rating) {
+  getRating: function(callback, rating) {
     if (isNaN(rating) || (rating > 5 || rating < 1)) {
       callback(
         null,
@@ -99,8 +99,8 @@ module.exports = {
     }
   },
 
-  insert_rating: function(results) {
-    if (results.user.error || results.content.error) {
+  insertRating: function(results) {
+    if (results.user.error || results.content.error || results.rating.error) {
       return;
     }
 
@@ -114,8 +114,8 @@ module.exports = {
     new_rate.save();
   },
 
-  update_content_stat: function(results) {
-    if (results.user.error || results.content.error) {
+  updateContentStat: function(results) {
+    if (results.user.error || results.content.error || results.rating.error) {
       return;
     }
 

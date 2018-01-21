@@ -1,26 +1,26 @@
 'use strict';
 
 var async = require("async");
-var rate_helper = require("../helpers/rate");
-var response_helper = require("../helpers/response");
+var rateHelper = require("../helpers/rate");
+var responseHelper = require("../helpers/response");
 
 exports.create_rating = function(req, res) {
   async.parallel({
     user: function(callback) {
-      rate_helper.get_user(callback, req.query.userId)
+      rateHelper.getUser(callback, req.query.userId)
     },
     content: function(callback) {
-      rate_helper.get_content(callback, req.query.contentId)
+      rateHelper.getContent(callback, req.query.contentId)
     },
     rating: function(callback) {
-      rate_helper.get_rating(callback, req.query.rating)
+      rateHelper.getRating(callback, req.query.rating)
     },
   },
   function(err, results) {
-    rate_helper.insert_rating(results);
-    rate_helper.update_content_stat(results);
+    rateHelper.insertRating(results);
+    rateHelper.updateContentStat(results);
 
-    response_helper.flush_json(
+    responseHelper.flushJson(
       results,
       res,
       function()

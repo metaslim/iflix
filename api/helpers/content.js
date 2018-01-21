@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var ContentStat = require('../models/content_stat');
 
 module.exports = {
-  get_content_stat: function(callback, contentId) {
+  getContentStat: function(callback, contentId) {
     const minimum_rating_required = 10;
 
     if (!mongoose.Types.ObjectId.isValid(contentId)) {

@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var content_statSchema = new Schema({
+var ContentStatSchema = new Schema({
   content: {
     type: Schema.Types.ObjectId,
     ref: 'Content',
@@ -31,4 +31,4 @@ var content_statSchema = new Schema({
   }
 })
 
-module.exports = mongoose.model('ContentStat', content_statSchema);
+module.exports = mongoose.model('ContentStat', ContentStatSchema);
