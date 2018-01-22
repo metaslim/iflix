@@ -1,4 +1,4 @@
-const rate_helper = require("../helpers/rate");
+const rate_helper = require('../helpers/rate');
 
 module.exports = {
   flushJson: (results, res, callback) => {
@@ -17,7 +17,9 @@ module.exports = {
 
     if(errors.length >= 1) {
       return res.status(422).json(
-        {errors: errors}
+        {
+          errors: errors
+        }
       )
     }
 

@@ -1,8 +1,8 @@
 'use strict';
 
-const async = require("async");
-const rateHelper = require("../helpers/rate");
-const responseHelper = require("../helpers/response");
+const async = require('async');
+const rateHelper = require('../helpers/rate');
+const responseHelper = require('../helpers/response');
 
 exports.createRating = (req, res) => {
   async.parallel({
@@ -23,7 +23,7 @@ exports.createRating = (req, res) => {
     responseHelper.flushJson(
       results,
       res,
-      () => { return {description: "Success"}}
+      () => { return { description: 'Success' }}
     )
   });
 };
