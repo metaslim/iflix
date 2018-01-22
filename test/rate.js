@@ -45,10 +45,10 @@ describe('Rate', () => {
   });
 
   afterEach((done) => {
-    ContentStat.remove((err,removed) => {
-      Rate.remove((err,removed) => {
-        Content.remove((err,removed) => {
-          User.remove((err,removed) => {
+    ContentStat.remove((error,removed) => {
+      Rate.remove((error,removed) => {
+        Content.remove((error,removed) => {
+          User.remove((error,removed) => {
             done();
           });
         });
@@ -67,7 +67,7 @@ describe('Rate', () => {
           rating: 5
         }
       )
-      .end((err, res) => {
+      .end((error, res) => {
         res.should.have.status(200);
         res.body.description.should.be.eql('Success');
         done();
@@ -84,7 +84,7 @@ describe('Rate', () => {
           rating: 5
         }
       )
-      .end((err, res) => {
+      .end((error, res) => {
         res.should.have.status(422);
         res.body.errors[0].description.should.be.eql('Content does not exist');
         res.body.errors[0].code.should.be.eql(404);
@@ -102,7 +102,7 @@ describe('Rate', () => {
           rating: 5
         }
       )
-      .end((err, res) => {
+      .end((error, res) => {
         res.should.have.status(422);
         res.body.errors[0].description.should.be.eql('contentId must be single String of 12 bytes or a string of 24 hex characters.');
         res.body.errors[0].code.should.be.eql(400);
@@ -120,7 +120,7 @@ describe('Rate', () => {
           rating: 5
         }
       )
-      .end((err, res) => {
+      .end((error, res) => {
         res.should.have.status(422);
         res.body.errors[0].description.should.be.eql('User does not exist');
         res.body.errors[0].code.should.be.eql(404);
@@ -138,7 +138,7 @@ describe('Rate', () => {
           rating: 5
         }
       )
-      .end((err, res) => {
+      .end((error, res) => {
         res.should.have.status(422);
         res.body.errors[0].description.should.be.eql('userId must be single String of 12 bytes or a string of 24 hex characters.');
         res.body.errors[0].code.should.be.eql(400);
@@ -156,7 +156,7 @@ describe('Rate', () => {
           rating: -1
         }
       )
-      .end((err, res) => {
+      .end((error, res) => {
         res.should.have.status(422);
         res.body.errors[0].description.should.be.eql('Invalid rating, only 1 - 5 is accepted');
         res.body.errors[0].code.should.be.eql(400);
