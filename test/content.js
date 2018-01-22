@@ -30,10 +30,8 @@ describe('Content', () => {
   });
 
   afterEach((done) => {
-    ContentStat.remove((error,removed) => {
-      Content.remove((error,removed) => {});
-    });
-    done();
+    ContentStat.remove((error,removed) => {})
+    .then(() => { Content.remove((error,removed) => { done(); }) });
   });
 
   describe('/POST content', () => {

@@ -45,15 +45,10 @@ describe('Rate', () => {
   });
 
   afterEach((done) => {
-    ContentStat.remove((error,removed) => {
-      Rate.remove((error,removed) => {
-        Content.remove((error,removed) => {
-          User.remove((error,removed) => {
-            done();
-          });
-        });
-      });
-    });
+    ContentStat.remove((error,removed) => {})
+    .then(() => { Rate.remove((error,removed) => {}) })
+    .then(() => { Content.remove((error,removed) => {}) })
+    .then(() => { User.remove((error,removed) => { done(); }) });
   });
 
   describe('/POST rating', () => {
