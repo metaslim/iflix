@@ -73,9 +73,7 @@ describe('Rate', () => {
         done();
       });
     });
-  });
 
-  describe('/POST rating', () => {
     it('it should not be successful with non existent content', (done) => {
       chai.request(server)
       .post('/rating')
@@ -93,9 +91,7 @@ describe('Rate', () => {
         done();
       });
     });
-  });
 
-  describe('/POST rating', () => {
     it('it should not be successful with non invalid contentId', (done) => {
       chai.request(server)
       .post('/rating')
@@ -113,9 +109,7 @@ describe('Rate', () => {
         done();
       });
     });
-  });
 
-  describe('/POST rating', () => {
     it('it should not be successful with non existent user', (done) => {
       chai.request(server)
       .post('/rating')
@@ -133,9 +127,7 @@ describe('Rate', () => {
         done();
       });
     });
-  });
 
-  describe('/POST rating', () => {
     it('it should not be successful with invalid userId', (done) => {
       chai.request(server)
       .post('/rating')
@@ -153,9 +145,7 @@ describe('Rate', () => {
         done();
       });
     });
-  });
 
-  describe('/POST rating', () => {
     it('it should not be successful with non existent user', (done) => {
       chai.request(server)
       .post('/rating')
