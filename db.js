@@ -35,7 +35,7 @@ function seedUsers() {
   ];
 
   for (const user of users) {
-    User.create(user);
+    User.create(user, (error, instance) => {});
   }
 }
 
@@ -62,7 +62,7 @@ function seedContent() {
   ];
 
   for (const content of contents) {
-    Content.create(content);
+    Content.create(content, (error, instance) => {});
   }
 }
 

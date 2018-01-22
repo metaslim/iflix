@@ -10,7 +10,7 @@ exports.showContent = (req, res) => {
       contentHelper.getContentStat(callback, req.body.contentId)
     },
   },
-  (err, results) => {
+  (error, results) => {
     responseHelper.flushJson(
       results,
       res,

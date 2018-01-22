@@ -16,7 +16,7 @@ exports.createRating = (req, res) => {
       rateHelper.getRating(callback, req.body.rating)
     },
   },
-  (err, results) => {
+  (error, results) => {
     rateHelper.insertRating(results);
     rateHelper.updateContentStat(results);
 

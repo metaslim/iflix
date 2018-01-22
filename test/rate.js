@@ -30,13 +30,13 @@ describe('Rate', () => {
         _id: contentObjectId,
         name: contentName,
         year: contentYear
-      }, (err, ins) => {
+      }, (error, instance) => {
         User.create(
           {
             _id: contentUserId,
             first_name: userFirstName,
             last_name: userLastName
-          }, (err, ins) => {
+          }, (error, instance) => {
             done();
           }
         );

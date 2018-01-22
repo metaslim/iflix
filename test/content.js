@@ -23,15 +23,15 @@ describe('Content', () => {
         _id: object_id,
         name: contentName,
         year: year
-      }, (err, ins) => {
+      }, (error, instance) => {
         done();
       }
     );
   });
 
   afterEach((done) => {
-    ContentStat.remove((err,removed) => {
-      Content.remove((err,removed) => {});
+    ContentStat.remove((error,removed) => {
+      Content.remove((error,removed) => {});
     });
     done();
   });
@@ -44,7 +44,7 @@ describe('Content', () => {
           total_rating: 10,
           number_of_rating: 2,
           average_rating: 5
-        }, (err, instance) => {
+        }, (error, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -52,7 +52,7 @@ describe('Content', () => {
               contentId: _id
             }
           )
-          .end((err, res) => {
+          .end((error, res) => {
             res.should.have.status(200);
             res.body.content.should.be.eql(contentName);
             chai.expect(res.body.average_rating).to.be.null;
@@ -70,7 +70,7 @@ describe('Content', () => {
           total_rating: 40,
           number_of_rating: 10,
           average_rating: number_of_rating
-        }, (err, instance) => {
+        }, (error, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -78,7 +78,7 @@ describe('Content', () => {
               contentId: _id
             }
           )
-          .end((err, res) => {
+          .end((error, res) => {
             res.should.have.status(200);
             res.body.content.should.be.eql(contentName);
             chai.expect(parseInt(res.body.average_rating)).to.be.eql(number_of_rating);
@@ -96,7 +96,7 @@ describe('Content', () => {
           total_rating: 40,
           number_of_rating: 10,
           average_rating: number_of_rating
-        }, (err, instance) => {
+        }, (error, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -104,7 +104,7 @@ describe('Content', () => {
               contentId: '5a63e724aa491c5bffc83ff4'
             }
           )
-          .end((err, res) => {
+          .end((error, res) => {
             res.should.have.status(422);
             res.body.errors[0].description.should.be.eql('Content does not exist');
             res.body.errors[0].code.should.be.eql(404);
@@ -122,7 +122,7 @@ describe('Content', () => {
           total_rating: 40,
           number_of_rating: 10,
           average_rating: number_of_rating
-        }, (err, instance) => {
+        }, (error, instance) => {
           chai.request(server)
           .post('/content')
           .send(
@@ -130,7 +130,7 @@ describe('Content', () => {
               contentId: '5a63e724aa491'
             }
           )
-          .end((err, res) => {
+          .end((error, res) => {
             res.should.have.status(422);
             res.body.errors[0].description.should.be.eql('contentId must be single String of 12 bytes or a string of 24 hex characters.');
             res.body.errors[0].code.should.be.eql(400);

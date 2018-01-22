@@ -23,7 +23,7 @@ module.exports = {
       {content: mongoose.Types.ObjectId(contentId)}
     )
     .populate('content')
-    .exec((err, result) => {
+    .exec((error, result) => {
       if (!result) {
         return callback(
           null,

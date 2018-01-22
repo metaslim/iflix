@@ -23,7 +23,7 @@ module.exports = {
     else {
       User.findOne(
         { _id: mongoose.Types.ObjectId(userId) },
-        (err, result) => {
+        (error, result) => {
           if (!result) {
             callback(
               null,
@@ -61,7 +61,7 @@ module.exports = {
     {
       Content.findOne(
         { _id: mongoose.Types.ObjectId(contentId) },
-        (err, result) => {
+        (error, result) => {
           if (!result) {
             callback(
               null,
@@ -109,7 +109,7 @@ module.exports = {
         user: results.user._id,
         content: results.content._id,
         rating: results.rating,
-      }
+      }, (error, instance) => {}
     );
   },
 
@@ -120,7 +120,7 @@ module.exports = {
 
     ContentStat.findOne(
       { content: mongoose.Types.ObjectId(results.content._id) },
-      (err, result) => {
+      (error, result) => {
         if (result) {
           result.total_rating = parseInt(result.total_rating) + parseInt(results.rating);
           result.number_of_rating = parseInt(result.number_of_rating) + 1;
@@ -134,7 +134,7 @@ module.exports = {
               total_rating: results.rating,
               number_of_rating: 1,
               average_rating: results.rating
-            }
+            }, (error, instance) => {}
           );
         }
       }
