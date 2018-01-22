@@ -20,10 +20,9 @@ module.exports = {
         {errors: errors}
       )
     }
-    else {
-      return res.status(200).json(
-        callback()
-      );
-    }
+
+    return res.status(200).json(
+      callback()
+    );
   }
 }
