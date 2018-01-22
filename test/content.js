@@ -87,13 +87,12 @@ describe('Content', () => {
     });
 
     it('it should not show content for wrong contentId', (done) => {
-      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,
           total_rating: 40,
           number_of_rating: 10,
-          average_rating: number_of_rating
+          average_rating: 4
         }, (error, instance) => {
           chai.request(server)
           .post('/content')
@@ -113,13 +112,12 @@ describe('Content', () => {
     });
 
     it('it should not show content for invalid contentId', (done) => {
-      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,
           total_rating: 40,
           number_of_rating: 10,
-          average_rating: number_of_rating
+          average_rating: 4
         }, (error, instance) => {
           chai.request(server)
           .post('/content')
