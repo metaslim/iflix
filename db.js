@@ -68,7 +68,7 @@ module.exports =  {
   },
 
   disconnectDb: () => {
-    setTimeout(function() {
+    setTimeout(() => {
       mongoose.connection.close()
     }, 2000);
   }
