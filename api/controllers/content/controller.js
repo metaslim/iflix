@@ -2,7 +2,7 @@
 
 const async = require('async');
 const contentHelper = require('./helper');
-const responseHelper = require('../../helpers/response');
+const responseHelper = require('../../lib/response');
 
 module.exports = {
   showContent: (req, res) => {

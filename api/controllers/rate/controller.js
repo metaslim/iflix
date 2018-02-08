@@ -2,7 +2,7 @@
 
 const async = require('async');
 const rateHelper = require('./helper');
-const responseHelper = require('../../helpers/response');
+const responseHelper = require('../../lib/response');
 
 module.exports = {
   createRating: (req, res) => {
