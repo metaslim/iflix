@@ -8,7 +8,6 @@ init(app);
 dispatch(app);
 
 app.listen(config.port);
-
 console.log('Rate RESTful API server started on: ' + config.port);
 
 module.exports = app;
