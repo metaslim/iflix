@@ -8,6 +8,7 @@ const chai = require('chai');
 const chaiHttp = require('chai-http');
 const server = require('../index');
 const should = chai.should();
+const expect = chai.expect;
 
 chai.use(chaiHttp);
 
@@ -53,7 +54,7 @@ describe('Content', () => {
           .end((error, res) => {
             res.should.have.status(200);
             res.body.content.should.be.eql(contentName);
-            chai.expect(res.body.average_rating).to.be.null;
+            expect(res.body.average_rating).to.be.null;
             done();
           });
         }
@@ -79,7 +80,7 @@ describe('Content', () => {
           .end((error, res) => {
             res.should.have.status(200);
             res.body.content.should.be.eql(contentName);
-            chai.expect(parseInt(res.body.average_rating)).to.be.eql(averageRating);
+            expect(parseInt(res.body.average_rating)).to.be.eql(averageRating);
             done();
           });
         }
