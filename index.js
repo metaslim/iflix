@@ -1,11 +1,11 @@
 const express = require('express');
 const app = express();
 const config = require('config');
-const dispacth = require('./app/dispatch');
+const dispatch = require('./app/dispatch');
 const init = require('./init/init');
 
 init(app);
-dispacth(app);
+dispatch(app);
 
 app.listen(config.port);
 
