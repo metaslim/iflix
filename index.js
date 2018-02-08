@@ -1,14 +1,10 @@
 const express = require('express');
 const app = express();
 const config = require('config');
-const mongoose = require('mongoose');
 const routes = require('./app/routes');
-const extend = require('./app/extend');
+const init = require('./init/init');
 
-mongoose.Promise = global.Promise;
-mongoose.connect(config.dbHost);
-
-extend(app);
+init(app);
 routes(app);
 
 app.listen(config.port);
