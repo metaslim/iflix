@@ -1,4 +1,5 @@
 'use strict';
+
 const rate = require('./controllers/rate/routes');
 const content = require('./controllers/content/routes');
 
