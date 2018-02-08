@@ -2,11 +2,7 @@
 
 const Content = require('../app/models/content');
 const User = require('../app/models/user');
-const config = require('config');
-const mongoose = require('mongoose');
-
-mongoose.Promise = global.Promise;
-mongoose.connect(config.dbHost);
+const db = require('../init/db');
 
 module.exports =  {
   seedData: () => {
@@ -69,7 +65,7 @@ module.exports =  {
 
   disconnectDb: () => {
     setTimeout(() => {
-      mongoose.connection.close()
+      db.connection.close()
     }, 2000);
   }
 };
