@@ -61,13 +61,13 @@ describe('Content', () => {
     });
 
     it('it should show rating correctly', (done) => {
-      const number_of_rating = 4
+      const averageRating = 4
       ContentStat.create(
         {
           content: object_id,
           total_rating: 40,
           number_of_rating: 10,
-          average_rating: number_of_rating
+          average_rating: averageRating
         }, (error, instance) => {
           chai.request(server)
           .post('/content')
@@ -79,7 +79,7 @@ describe('Content', () => {
           .end((error, res) => {
             res.should.have.status(200);
             res.body.content.should.be.eql(contentName);
-            chai.expect(parseInt(res.body.average_rating)).to.be.eql(number_of_rating);
+            chai.expect(parseInt(res.body.average_rating)).to.be.eql(averageRating);
             done();
           });
         }
@@ -87,13 +87,12 @@ describe('Content', () => {
     });
 
     it('it should not show content for wrong contentId', (done) => {
-      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,
           total_rating: 40,
           number_of_rating: 10,
-          average_rating: number_of_rating
+          average_rating: 4
         }, (error, instance) => {
           chai.request(server)
           .post('/content')
@@ -113,13 +112,12 @@ describe('Content', () => {
     });
 
     it('it should not show content for invalid contentId', (done) => {
-      const number_of_rating = 4
       ContentStat.create(
         {
           content: object_id,
           total_rating: 40,
           number_of_rating: 10,
-          average_rating: number_of_rating
+          average_rating: 4
         }, (error, instance) => {
           chai.request(server)
           .post('/content')
