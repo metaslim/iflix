@@ -1,21 +1,18 @@
 const express = require('express');
 const app = express();
-const port = 3000;
 const config = require('config');
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+const routes = require('./app/routes');
+const extend = require('./app/extend');
 
 mongoose.Promise = global.Promise;
 mongoose.connect(config.dbHost);
 
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
-
-const routes = require('./app/routes');
+extend(app);
 routes(app);
 
-app.listen(port);
+app.listen(config.port);
 
-console.log('Rate RESTful API server started on: ' + port);
+console.log('Rate RESTful API server started on: ' + config.port);
 
 module.exports = app;

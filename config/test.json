@@ -1,4 +1,5 @@
 {
   "dbHost": "mongodb://localhost/rate_db_test",
-  "minimumRatingRequired": 10
+  "minimumRatingRequired": 10,
+  "port": 3000
 }
