@@ -1,7 +1,7 @@
 'use strict';
 
-const Content = require('./api/models/content');
-const User = require('./api/models/user');
+const Content = require('../app/models/content');
+const User = require('../app/models/user');
 const config = require('config');
 const mongoose = require('mongoose');
 

@@ -1,10 +1,10 @@
 process.env.NODE_ENV = 'test';
 
 const mongoose = require('mongoose');
-const ContentStat = require('../api/models/content_stat');
-const Content = require('../api/models/content');
-const Rate = require('../api/models/rate');
-const User = require('../api/models/user');
+const ContentStat = require('../app/models/content_stat');
+const Content = require('../app/models/content');
+const Rate = require('../app/models/rate');
+const User = require('../app/models/user');
 
 const chai = require('chai');
 const chaiHttp = require('chai-http');

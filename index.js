@@ -6,13 +6,12 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-
 mongoose.connect(config.dbHost);
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const routes = require('./api/routes');
+const routes = require('./app/routes');
 routes(app);
 
 app.listen(port);
