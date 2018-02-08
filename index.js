@@ -12,7 +12,7 @@ mongoose.connect(config.dbHost);
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-const routes = require('./api/routes/routes');
+const routes = require('./api/routes');
 routes(app);
 
 app.listen(port);

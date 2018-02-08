@@ -1,4 +1,4 @@
-const rate_helper = require('../helpers/rate');
+'use strict';
 
 module.exports = {
   flushJson: (results, res, callback) => {

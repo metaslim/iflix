@@ -1,7 +1,7 @@
 'use strict';
 
 const mongoose = require('mongoose');
-const ContentStat = require('../models/content_stat');
+const ContentStat = require('../../models/content_stat');
 const config = require('config');
 
 module.exports = {

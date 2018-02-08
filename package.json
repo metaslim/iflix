@@ -9,7 +9,7 @@
     "reset_db": "rm -rf data/db/*",
     "seed_db": "node -e 'require(\"./db\").seedData()'",
     "test": "mocha --exit",
-    "start": "nodemon server.js"
+    "start": "nodemon index.js"
   },
   "author": "Welly",
   "license": "ISC",
